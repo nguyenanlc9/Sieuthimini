@@ -1,31 +1,20 @@
-import { useContext, useEffect, useState } from 'react'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../firebase'
+import { useContext, useEffect } from 'react'
 import { AppContext } from '../context/AppContext'
 import ProductCard from '../components/ProductCard'
-import sampleData from '../sampleData'
+import products from '../data/sampleProducts'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function Home() {
-  const [products, setProducts] = useState([])
   const { addToCart } = useContext(AppContext)
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const snapshot = await getDocs(collection(db, 'products'))
-        const list = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-        setProducts(list)
-      } catch (err) {
-        console.log('Using sample data', err)
-        setProducts(sampleData)
-      }
-    }
-    fetchProducts()
+    AOS.init({ once: true })
   }, [])
 
   return (
-    <div className="home">
-      <div className="products-grid">
+    <div className="p-4">
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map(p => (
           <ProductCard key={p.id} product={p} addToCart={addToCart} />
         ))}
