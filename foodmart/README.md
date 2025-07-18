@@ -7,6 +7,7 @@ React + Vite project for a food e-commerce website using Tailwind CSS and Fireba
 ```bash
 npm install
 npm run dev
+
 ```
 
 To upload sample products to Firestore:
