@@ -7,7 +7,6 @@ function Header() {
       <Link to="/" className="logo">FoodMart</Link>
       <nav className="nav">
         <Link to="/">Home</Link>
-        <Link to="/admin">Admin</Link>
         <Link to="/login">Login</Link>
       </nav>
       <CartIcon />
