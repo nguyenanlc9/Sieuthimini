@@ -24,8 +24,8 @@ function Home() {
   }, [])
 
   return (
-    <div className="p-4">
-      <div className="grid md:grid-cols-4 gap-4">
+    <div className="home">
+      <div className="products-grid">
         {products.map(p => (
           <ProductCard key={p.id} product={p} addToCart={addToCart} />
         ))}

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useEffect, useReducer } from 'react'
 
 export const AppContext = createContext()
@@ -8,13 +9,17 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case 'ADD_TO_CART': {
       const existing = state.cart.find(item => item.id === action.product.id)
       if (existing) {
         existing.quantity += 1
         return { ...state, cart: [...state.cart] }
       }
-      return { ...state, cart: [...state.cart, { ...action.product, quantity: 1 }] }
+      return {
+        ...state,
+        cart: [...state.cart, { ...action.product, quantity: 1 }],
+      }
+    }
     case 'REMOVE_FROM_CART':
       return { ...state, cart: state.cart.filter(i => i.id !== action.id) }
     case 'UPDATE_QTY':
