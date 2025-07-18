@@ -6,14 +6,15 @@ import CartPage from './pages/CartPage'
 import Login from './pages/Login'
 import AdminDashboard from './pages/AdminDashboard'
 import { AppProvider } from './context/AppContext'
+import './App.css'
 
 function App() {
   return (
     <Router>
       <AppProvider>
-        <div className="flex flex-col min-h-screen">
+        <div className="app">
           <Header />
-          <main className="flex-1">
+          <main className="main">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/cart" element={<CartPage />} />
